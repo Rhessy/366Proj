@@ -1,6 +1,5 @@
 <?php 
 include 'functions.php';  //Includes the php functions from the file functions.php in this file 
-// print_r(GetData()); //Calls the GetData function to return the requested data
 $empID;
 $displayEmpData = false;
 ?> 
@@ -44,7 +43,7 @@ $displayEmpData = false;
 		{
 			echo "<div class=\"secondary_tables\">";
 			echo "<table>";
-			echo "<tr><th>ID</th><th>Name</th><th>Address</th><th>Salary</th><th>Birthdate</th><th>Route</th>";
+			echo "<tr><th>ID</th><th>Name</th><th>Address</th><th>Salary</th><th>Birthdate</th><th>Manager ID</th><th>Route</th></tr>";
 			echo Table_Builder(ManagerView($empID));
 			echo "</table>";
 			echo "</div>";
