@@ -1,15 +1,16 @@
 .navigation {
     background-color: lightgray;
     overflow: hidden;
+    margin-bottom: 15px;
 }
 
 .navigation a {
-        float: left;
-        color: black;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 16px;
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 16px;
 }
 
 .navigation a:hover {
@@ -20,3 +21,20 @@
 .navigation a.active {
     color: red;
 }
+
+.main_tables {
+    background-color: bisque;
+    height: 200px;
+    overflow: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.secondary_tables{
+    background-color: bisque;
+    height: 75px;
+    overflow: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+

@@ -1,6 +1,8 @@
 <?php 
 include 'functions.php';  //Includes the php functions from the file functions.php in this file 
-// print_r(GetData()); //Calls the GetData function to return the requested data 
+// print_r(GetData()); //Calls the GetData function to return the requested data
+$empID;
+$displayEmpData = false;
 ?> 
 
 <!DOCTYPE html>
@@ -16,17 +18,42 @@ include 'functions.php';  //Includes the php functions from the file functions.p
   <a href="Routes.php">Routes</a>
 </div>
 
-<!-- Display employees table... -->
+<div class="main_tables">
+<table>
+<tr><th>Employee ID</th><th>Employee Name</th></tr>
+<?php echo Table_Builder(GetEmployeeData()); ?>
+</table>
+</div>
 
-<form method="post" action="functions.php" method=> 
-	View employee info: <input type="text" name="empID" placeholder="Enter employee ID"><br>
+<?php
+	if(isset($_POST['viewEmployee'])){
+		$displayEmpData = true;
+		if (is_numeric($_POST['tempEmpID'])){
+			$empID = $_POST['tempEmpID'];
+		}
+	}
+?>
+
+<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>"> 
+	View employee info: <input type="text" name="tempEmpID" placeholder="Enter employee ID"><br>
 	<input type="submit" name="viewEmployee"><br>
 </form>
 
+<?php
+		if($displayEmpData && is_numeric($_POST['tempEmpID']))
+		{
+			echo "<div class=\"secondary_tables\">";
+			echo "<table>";
+			echo "<tr><th>ID</th><th>Name</th><th>Address</th><th>Salary</th><th>Birthdate</th><th>Route</th>";
+			echo Table_Builder(ManagerView($empID));
+			echo "</table>";
+			echo "</div>";
+		}
+		elseif($displayEmpData && !(is_numeric($_POST['tempEmpID']))){
+			echo "No ID entered.";
+		}
+?>
+
 </body>
-
-
-
-
 
 </html>
