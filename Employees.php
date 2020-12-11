@@ -16,6 +16,12 @@ include 'functions.php';  //Includes the php functions from the file functions.p
   <a href="Routes.php">Routes</a>
 </div>
 
+<!-- Display employees table... -->
+
+<form method="post" action="functions.php" method=> 
+	View employee info: <input type="text" name="empID" placeholder="Enter employee ID"><br>
+	<input type="submit" name="viewEmployee"><br>
+</form>
 
 </body>
 
