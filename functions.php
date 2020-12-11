@@ -27,10 +27,9 @@ it will store the data from the specified table into an array and return the arr
 for easy access of the data later
 */
 
-function GetData() {
- $table = 'route';
+function GetEmployeeData() {
   
-    $sql = "SELECT * FROM $table "; //Setting whatever query you want to run to a string variable 
+    $sql = "SELECT empid, name FROM employees"; //Setting whatever query you want to run to a string variable 
 $result = pg_query(DbConnect(), $sql) or die("error to fetch data");  
 $data = array(); //Iinitializing ane mpty array 
 
@@ -47,5 +46,86 @@ while($row = pg_fetch_row($result)){
 
   return $data; //return the data from the database table as an array 
 }
+
+function ManagerView($empid) {
+
+  $sql = "SELECT * FROM employee where name = $empid"; //Setting whatever query you want to run to a string variable 
+  $result = pg_query(DbConnect(), $sql) or die("error to fetch data");  
+  $data = array(); //Iinitializing ane mpty array 
+  
+  //If the query returns nothing send error message 
+  if (!$result){ 
+    echo "An error occured.\n";
+    exit;
+
+    //while there is data in each given row add it to the array 
+while($row = pg_fetch_row($result)){
+  $data[] = $row;
+}
+
+
+return $data; //return the data from the database table as an array 
+
+}
+
+function ManagerEdit($empid, $New_route) {
+  $sql = "update employee set route = $New_route, where name = $empid"; //Setting whatever query you want to run to a string variable 
+
+    ManagerView($emp_name);
+}
     
+function Display_Hub() {
+
+  $sql = ""; //Setting whatever query you want to run to a string variable 
+  $result = pg_query(DbConnect(), $sql) or die("error to fetch data");  
+  $data = array(); //Iinitializing ane mpty array 
+  
+  //If the query returns nothing send error message 
+  if (!$result){ 
+    echo "An error occured.\n";
+    exit;
+
+    //while there is data in each given row add it to the array 
+while($row = pg_fetch_row($result)){
+  $data[] = $row;
+
+}
+function Bus_info() {
+  $sql = "Select * from bus;"; //Setting whatever query you want to run to a string variable 
+}
+function Add_Bus($hubid) {
+  $sql = "insert into bus (hubid) values ($hubid)"; //Setting whatever query you want to run to a string variable
+  Bus_info();
+}
+function Edit_Bus($hubid) {
+  $sql = "Alter table bus drop where hubid = $hubid";
+}
+function Routes_info() {
+  $sql = "select * from routes"; //Setting whatever query you want to run to a string variable 
+
+}
+function Remove_route($hubid) {
+  $sql = "update route where hubid = $hubid"; //Setting whatever query you want to run to a string variable 
+}
+
+function Display_Route() {
+  $sql = "Select * from route;"; //Setting whatever query you want to run to a string variable 
+  $result = pg_query(DbConnect(), $sql) or die("error to fetch data");  
+  $data = array(); //Iinitializing ane mpty array 
+  
+  //If the query returns nothing send error message 
+  if (!$result){ 
+    echo "An error occured.\n";
+    exit;
+
+    //while there is data in each given row add it to the array 
+while($row = pg_fetch_row($result)){
+  $data[] = $row;
+}
+
+function Route_indepth($routeid) {
+
+}
+
+
 ?>
