@@ -1,5 +1,5 @@
-host = shinji.cs.ndsu.nodak.edu
-dbname = rilhess_db366f20
-user = rilhess_366f20
-sslmode = require
-password = password
+shinji.cs.ndsu.nodak.edu
+rilhess_db366f20
+rilhess_366f20
+require
+password
